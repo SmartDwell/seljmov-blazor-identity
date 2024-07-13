@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>12.0</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PackageTags>hosting infrastructure</PackageTags>
+        <AssemblyName>Seljmov.Blazor.Identity.Client</AssemblyName>
+        <RootNamespace>Seljmov.Blazor.Identity.Client</RootNamespace>
+        <Authors>Zagidin Selimov</Authors>
+        <Copyright>Copyright © Zagidin Selimov</Copyright>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionSuffix>alpha</VersionSuffix>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.0-preview1" />
+    </ItemGroup>
+
+</Project>
