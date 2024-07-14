@@ -8,5 +8,10 @@ public class ConfigurationOptions
     /// <summary>
     /// Путь к серверу аутентификации.
     /// </summary>
-    public string AuthServerUrl { get; set; } = string.Empty;
+    public string AuthenticationServerUrl { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// Путь к клиенту аутентификации.
+    /// </summary>
+    public string AuthenticationClientUrl { get; set; } = string.Empty;
 }

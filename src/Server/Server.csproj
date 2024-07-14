@@ -6,8 +6,8 @@
         <LangVersion>12.0</LangVersion>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PackageTags>hosting infrastructure</PackageTags>
-        <AssemblyName>Seljmov.Blazor.Identity.Client</AssemblyName>
-        <RootNamespace>Seljmov.Blazor.Identity.Client</RootNamespace>
+        <AssemblyName>Seljmov.Blazor.Identity.Server</AssemblyName>
+        <RootNamespace>Seljmov.Blazor.Identity.Server</RootNamespace>
         <Authors>Zagidin Selimov</Authors>
         <Copyright>Copyright © Zagidin Selimov</Copyright>
         <NoPackageAnalysis>true</NoPackageAnalysis>
@@ -20,15 +20,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.7" />
-      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
-      <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.0-preview1" />
+      <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Shared\Shared.csproj" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" Version="8.0.7" />
     </ItemGroup>
 
 </Project>

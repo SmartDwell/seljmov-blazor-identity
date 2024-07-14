@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Shared;
 
 namespace Seljmov.Blazor.Identity.Client;
 
@@ -28,18 +29,18 @@ public static class WebAssemblyHostBuilderExtensions
         builder.Services.AddSingleton<AuthenticationStateProvider>(provider => provider.GetRequiredService<AuthStateProvider>());
         
         var httpClient = new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) };
-        var configurationOptions = await httpClient.GetFromJsonAsync<ConfigurationOptions>("/api/configuration/options");
+        var configurationOptions = await httpClient.GetFromJsonAsync<ConfigurationOptions>(RouteConstants.ConfigurationData.GetOptionsUrl());
         if (configurationOptions is null)
         {
             throw new InvalidOperationException("Not able to load configuration.");
         }
         
-        var authHttpClient = new HttpClient { BaseAddress = new Uri(configurationOptions.AuthServerUrl) };
+        var authenticationHttpClient = new HttpClient { BaseAddress = new Uri(configurationOptions.AuthenticationServerUrl) };
         
         builder.Services.AddScoped<AuthFlow>(sp =>
             new AuthFlow(
-                client: httpClient,
-                authHttpClient: authHttpClient,
+                authClientHttpClient: httpClient,
+                authServerHttpClient: authenticationHttpClient,
                 authStateProvider: sp.GetRequiredService<AuthStateProvider>(),
                 navigation: sp.GetRequiredService<NavigationManager>()
             ));

@@ -65,13 +65,9 @@ public class AuthStateProvider : AuthenticationStateProvider
     public string RefreshToken => _user?.RefreshToken ?? string.Empty;
     
     /// <inheritdoc cref="AuthenticationStateProvider.GetAuthenticationStateAsync" />
-    public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+    public override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        if (_user == null)
-        {
-            await InitializeAuthenticationStateAsync();
-        }
-        return GetState();
+        return Task.FromResult(GetState());
     }
     
     /// <summary>
@@ -98,23 +94,6 @@ public class AuthStateProvider : AuthenticationStateProvider
         _user = null;
         await _tokenRepository.ClearTokensAsync();
         NotifyAuthenticationStateChanged(Task.FromResult(GetState()));
-    }
-    
-    /// <summary>
-    /// Инициализация состояния аутентификации.
-    /// </summary>
-    public async Task InitializeAuthenticationStateAsync()
-    {
-        var (accessToken, refreshToken) = await _tokenRepository.GetTokens();
-
-        if (!string.IsNullOrEmpty(accessToken) && !string.IsNullOrEmpty(refreshToken))
-        {
-            await Login(accessToken, refreshToken);
-        }
-        else
-        {
-            _user = null;
-        }
     }
     
     /// <summary>
