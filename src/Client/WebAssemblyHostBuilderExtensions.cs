@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Shared;
+using Seljmov.Blazor.Identity.Shared;
 
 namespace Seljmov.Blazor.Identity.Client;
 

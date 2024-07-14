@@ -1,4 +1,4 @@
-namespace Shared;
+namespace Seljmov.Blazor.Identity.Shared;
 
 /// <summary>
 /// Константы маршрутов.

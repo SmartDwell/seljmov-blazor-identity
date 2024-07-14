@@ -2,9 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Options;
-using Seljmov.Blazor.Identity.Client;
-using Shared;
+using Seljmov.Blazor.Identity.Shared;
 
 namespace Seljmov.Blazor.Identity.Server.ApiGroups;
 
@@ -26,8 +24,8 @@ public static class ConfigurationGroup
             .WithOpenApi();
     }
     
-    private static Ok<ConfigurationOptions> GetConfigurations(IOptions<ConfigurationOptions> configurationOptions)
+    private static Ok<ConfigurationOptions> GetConfigurations(ConfigurationOptions configurationOptions)
     {
-        return TypedResults.Ok(configurationOptions.Value);
+        return TypedResults.Ok(configurationOptions);
     }
 }

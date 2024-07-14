@@ -1,4 +1,4 @@
-namespace Seljmov.Blazor.Identity.Client;
+namespace Seljmov.Blazor.Identity.Shared;
 
 /// <summary>
 /// Параметры конфигурации.
